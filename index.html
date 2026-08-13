@@ -182,13 +182,13 @@ form.onsubmit=async e=>{
     email:email.value.trim(),
     flat:Number(flat.value),
     amount:Number(amount.value),
-    utr:utr.value.trim()
+    utr:utr.value.trim().slice(-6)
   };
   const btn=document.querySelector(".submit");
   btn.disabled=true; btn.textContent="SUBMITTING…";
   show("success","Submitting your donation details…");
   try{
-    await fetch("https://script.google.com/macros/s/AKfycbwS9E3ybpADCkjJprfrAsalIfdtCOlg_nGRxu123ICRNLeDqxrP5KBlx-rKRoadH5ZX/exec",{
+    await fetch("https://script.google.com/macros/s/AKfycbz3yb6S_qeYI4BYjPChbf2eRbIyPlgu3eRitwxb3f8SgDPVo51ed1GzFQtzAd-46rrM/exec",{
       method:"POST", mode:"no-cors",
       headers:{"Content-Type":"text/plain;charset=utf-8"},
       body:JSON.stringify(data)
