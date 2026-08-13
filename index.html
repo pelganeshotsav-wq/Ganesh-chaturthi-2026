@@ -93,8 +93,8 @@ placeholder="Enter amount" required>
 <div id="status" class="status"></div>
 
 <label for="utr">UPI Transaction ID / UTR *</label>
-<input id="utr" name="utr" type="text" minlength="6" maxlength="50"
-placeholder="Enter transaction reference number" required>
+<input id="utr" name="utr" type="text" inputmode="numeric" minlength="6" maxlength="6"
+pattern="[0-9]{6}" placeholder="Enter 6-digit transaction reference number" required>
 
 <button class="submit" type="submit">SUBMIT DONATION</button>
 <div class="note">Please complete the UPI payment before entering your UTR and submitting.</div>
@@ -164,6 +164,10 @@ document.querySelectorAll(".appBtn").forEach(btn=>{
 });
 updateUPIDisplay();
 
+document.getElementById("utr").addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g, "").slice(0, 6);
+});
+
 document.getElementById("pay").onclick=()=>{
   if(!basic())return;
   const pa=Number(flat.value)<=2999?UPI1:UPI2;
@@ -175,14 +179,14 @@ form.onsubmit=async e=>{
   e.preventDefault();
   if(!basic())return;
   const utr=document.getElementById("utr");
-  if(!utr.value.trim()||utr.value.trim().length<6){utr.classList.add("invalid");show("err","Please enter a valid UPI Transaction ID / UTR.");utr.focus();return}
+  if(!/^\d{6}$/.test(utr.value.trim())){utr.classList.add("invalid");show("err","Please enter exactly 6 digits for the UPI Transaction ID / UTR.");utr.focus();return}
   const data={
     name:document.getElementById("name").value.trim(),
     mobile:mobile.value.trim(),
     email:email.value.trim(),
     flat:Number(flat.value),
     amount:Number(amount.value),
-    utr:utr.value.trim().slice(-6)
+    utr:utr.value.trim()
   };
   const btn=document.querySelector(".submit");
   btn.disabled=true; btn.textContent="SUBMITTING…";
