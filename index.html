@@ -67,18 +67,18 @@ placeholder="name@example.com" required>
 
 <label for="flat">Flat Number *</label>
 <input id="flat" name="flat" type="text" inputmode="numeric" maxlength="4"
-placeholder="1001 - 4188" required>
+placeholder="Enter flat number" required>
 
 <label for="amount">Donation Amount (₹) *</label>
 <input id="amount" name="amount" type="number" min="1" step="1"
 placeholder="Enter amount" required>
 
-<div class="note">Flats 1001–2999 use UPI account 1. Flats 3000–4188 use UPI account 2.</div>
+<div class="note">Your UPI account will be selected automatically based on your flat number.</div>
 
 <button type="button" class="pay" id="pay">💳 PAY VIA UPI</button>
 <div id="iphonePay" class="iphonePay">
-  <div class="iphoneTitle">🍎 iPhone users</div>
-  <div class="iphoneText">Select your UPI app to continue with the payment.</div>
+  <div class="iphoneTitle">💳 Select your UPI App</div>
+  <div class="iphoneText">Choose your preferred UPI app. This option works on Android and iPhone.</div>
   <div class="upiApps">
     <button type="button" class="appBtn" data-app="gpay">Google Pay</button>
     <button type="button" class="appBtn" data-app="phonepe">PhonePe</button>
@@ -171,16 +171,35 @@ document.getElementById("pay").onclick=()=>{
   show("success",`Opening UPI app for ₹${Number(amount.value).toLocaleString("en-IN")} payment…`);
   window.location.href=url;
 };
-form.onsubmit=e=>{
+form.onsubmit=async e=>{
   e.preventDefault();
   if(!basic())return;
   const utr=document.getElementById("utr");
   if(!utr.value.trim()||utr.value.trim().length<6){utr.classList.add("invalid");show("err","Please enter a valid UPI Transaction ID / UTR.");utr.focus();return}
-  const data={timestamp:new Date().toISOString(),name:document.getElementById("name").value.trim(),
-    mobile:mobile.value.trim(),email:email.value.trim(),flat:Number(flat.value),
-    amount:Number(amount.value),upi:Number(flat.value)<=2999?UPI1:UPI2,utr:utr.value.trim()};
-  localStorage.setItem("lastDonation",JSON.stringify(data));
-  show("success","🙏 Thank you for your contribution! Your donation details are ready to be connected to the Google Sheet.");
+  const data={
+    name:document.getElementById("name").value.trim(),
+    mobile:mobile.value.trim(),
+    email:email.value.trim(),
+    flat:Number(flat.value),
+    amount:Number(amount.value),
+    utr:utr.value.trim()
+  };
+  const btn=document.querySelector(".submit");
+  btn.disabled=true; btn.textContent="SUBMITTING…";
+  show("success","Submitting your donation details…");
+  try{
+    await fetch("https://script.google.com/macros/s/AKfycbwS9E3ybpADCkjJprfrAsalIfdtCOlg_nGRxu123ICRNLeDqxrP5KBlx-rKRoadH5ZX/exec",{
+      method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(data)
+    });
+    show("success","🙏 Thank you! Your donation details have been submitted successfully. A confirmation email will be sent to your email address.");
+    form.reset(); updateUPIDisplay();
+  }catch(err){
+    show("err","Unable to submit right now. Please check your internet connection and try again.");
+  }finally{
+    btn.disabled=false; btn.textContent="SUBMIT DONATION";
+  }
 };
 </script>
 </body></html>
