@@ -14,12 +14,22 @@ body{margin:0;font-family:Arial,sans-serif;background:#fff7ed;color:#3b2415}
 .icon{width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:-60px auto 12px;border:4px solid white;box-shadow:0 4px 14px #0003;position:relative}
 h1{text-align:center;margin:0 0 5px;font-size:26px}
 .sub{text-align:center;color:#795548;margin-bottom:22px;line-height:1.5}
+.bappa{font-size:14px;font-weight:700;margin:6px 0 18px}
+.message{text-align:left;color:#4e342e;font-size:15px;line-height:1.65}
+.message p{margin:0 0 14px}
+.highlight{text-align:center;font-weight:700;font-size:14px}
 label{display:block;font-weight:700;margin:15px 0 7px}
 input{width:100%;padding:13px;border:1px solid #d6d6d6;border-radius:10px;font-size:16px}
 input:focus{outline:2px solid #f0a040;border-color:#f0a040}
 button{width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:700;cursor:pointer}
 .pay{background:#138a45;color:#fff;margin-top:18px}.submit{background:#e87500;color:#fff;margin-top:12px}
 .note{font-size:13px;color:#666;margin-top:8px;line-height:1.4}
+.iphonePay{margin-top:14px;padding:14px;border-radius:12px;background:#f7f7f7;border:1px solid #e2e2e2}
+.iphoneTitle{font-weight:700;margin-bottom:5px}.iphoneText{font-size:13px;color:#666;line-height:1.4;margin-bottom:10px}
+.upiApps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.appBtn{padding:11px 8px!important;background:#fff!important;color:#333!important;border:1px solid #ccc!important;font-size:14px!important}
+.upiBox{display:flex;align-items:center;gap:8px}.upiBox span{flex:1;min-width:0;font-weight:700;font-size:13px;word-break:break-all}
+.upiBox button{width:auto;padding:9px 11px;font-size:12px;background:#333;color:#fff;border-radius:8px}
 .status{margin-top:14px;padding:12px;border-radius:10px;display:none;line-height:1.4}
 .success{background:#e8f5e9;color:#1b5e20}.err{background:#ffebee;color:#b71c1c}
 .invalid{border-color:#d32f2f!important}
@@ -30,8 +40,18 @@ button{width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-w
 <img class="cover" src="ganesh-cover.jpg" alt="Ganesh Chaturthi">
 <div class="content">
 <img class="icon" src="ganesh-icon.jpg" alt="Lord Ganesha">
-<h1>🪔 Ganesh Chaturthi 2026</h1>
-<div class="sub"><b>Prestige Elysian</b><br>Let’s come together to welcome Bappa 🙏</div>
+<h1>Ganesh Chaturthi Donation Form</h1>
+<div class="sub">
+<div class="bappa">🙏 Ganpati Bappa Morya 🙏</div>
+<div class="message">
+<p><b>Dear Residents,</b></p>
+<p>As we prepare to welcome Lord Ganesha to our society, we invite everyone to come together and make this year’s Ganesh Chaturthi celebration truly special. 🐘🌺</p>
+<p>We humbly request all residents to contribute towards the celebrations through our Ganesh Chaturthi Donation Form. Every contribution, big or small, will help us create a beautiful and memorable celebration for our entire Elysian family. ❤️</p>
+<p class="highlight">✨ Your contribution • Our celebration • Bappa’s blessings ✨</p>
+<p>Please fill in the donation form and support the celebrations.</p>
+<p><b>Ganpati Bappa Morya! 🙏🌺</b></p>
+</div>
+</div>
 
 <form id="donationForm" novalidate>
 <label for="name">Name *</label>
@@ -47,15 +67,29 @@ placeholder="name@example.com" required>
 
 <label for="flat">Flat Number *</label>
 <input id="flat" name="flat" type="text" inputmode="numeric" maxlength="4"
-placeholder="1001 - 4118" required>
+placeholder="1001 - 4188" required>
 
 <label for="amount">Donation Amount (₹) *</label>
 <input id="amount" name="amount" type="number" min="1" step="1"
 placeholder="Enter amount" required>
 
-<div class="note">Flats 1001–2999 use UPI account 1. Flats 3000–4118 use UPI account 2.</div>
+<div class="note">Flats 1001–2999 use UPI account 1. Flats 3000–4188 use UPI account 2.</div>
 
 <button type="button" class="pay" id="pay">💳 PAY VIA UPI</button>
+<div id="iphonePay" class="iphonePay">
+  <div class="iphoneTitle">🍎 iPhone users</div>
+  <div class="iphoneText">Select your UPI app to continue with the payment.</div>
+  <div class="upiApps">
+    <button type="button" class="appBtn" data-app="gpay">Google Pay</button>
+    <button type="button" class="appBtn" data-app="phonepe">PhonePe</button>
+    <button type="button" class="appBtn" data-app="paytm">Paytm</button>
+    <button type="button" class="appBtn" data-app="bhim">BHIM</button>
+  </div>
+  <div class="upiBox">
+    <span id="upiDisplay">Enter flat number</span>
+    <button type="button" id="copyUpi">COPY UPI ID</button>
+  </div>
+</div>
 <div id="status" class="status"></div>
 
 <label for="utr">UPI Transaction ID / UTR *</label>
@@ -84,10 +118,52 @@ function basic(){
   if(!name.value.trim()){name.classList.add("invalid");show("err","Please enter your name.");name.focus();return false}
   if(!/^[6-9][0-9]{9}$/.test(mobile.value.trim())){mobile.classList.add("invalid");show("err","Please enter a valid 10-digit Indian mobile number.");mobile.focus();return false}
   if(!emailOK(email.value.trim())){email.classList.add("invalid");show("err","Please enter a valid email address.");email.focus();return false}
-  if(!Number.isInteger(f)||f<1001||f>4118){flat.classList.add("invalid");show("err","Flat number must be between 1001 and 4118.");flat.focus();return false}
+  if(!Number.isInteger(f)||f<1001||f>4188){flat.classList.add("invalid");show("err","Flat number must be between 1001 and 4188.");flat.focus();return false}
   if(!Number.isInteger(a)||a<1){amount.classList.add("invalid");show("err","Please enter a valid whole-number donation amount.");amount.focus();return false}
   return true
 }
+function selectedUPI(){
+  const f=Number(flat.value);
+  return Number.isInteger(f)&&f>=1001&&f<=4188 ? (f<=2999?UPI1:UPI2) : "";
+}
+function updateUPIDisplay(){
+  document.getElementById("upiDisplay").textContent=selectedUPI()||"Enter flat number";
+}
+flat.addEventListener("input", updateUPIDisplay);
+async function copyUPI(){
+  const pa=selectedUPI();
+  if(!pa){show("err","Please enter a valid flat number first.");return false}
+  try{
+    await navigator.clipboard.writeText(pa);
+    show("success","UPI ID copied. Open your preferred UPI app and paste it to make the payment.");
+  }catch(e){show("err","Please copy this UPI ID manually: "+pa)}
+  return true;
+}
+document.getElementById("copyUpi").onclick=async()=>{ if(!basic()) return; await copyUPI(); };
+
+function openSelectedApp(app){
+  if(!basic()) return;
+  const pa=selectedUPI();
+  const am=Number(amount.value).toFixed(2);
+  const common=`pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(RECIPIENT)}&am=${am}&cu=INR`;
+  let url;
+  if(app==="gpay"){
+    url=`gpay://upi/pay?${common}`;
+  }else if(app==="phonepe"){
+    url=`phonepe://pay?${common}`;
+  }else if(app==="paytm"){
+    url=`paytmmp://pay?${common}`;
+  }else{
+    url=`bhim://pay?${common}`;
+  }
+  show("success","Opening selected UPI app…");
+  window.location.href=url;
+}
+document.querySelectorAll(".appBtn").forEach(btn=>{
+  btn.addEventListener("click",()=>openSelectedApp(btn.dataset.app));
+});
+updateUPIDisplay();
+
 document.getElementById("pay").onclick=()=>{
   if(!basic())return;
   const pa=Number(flat.value)<=2999?UPI1:UPI2;

@@ -6,7 +6,7 @@ Images:
 
 UPI:
 1001-2999 -> 9840365240@ptsbi
-3000-4118 -> nitrkl.avinash@okicici
+3000-4188 -> nitrkl.avinash@okicici
 
 The form validates mobile, email, flat number and donation amount.
 Google Sheets submission is the remaining integration step.
