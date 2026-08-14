@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Donation form submission endpoint updated 2026-08-14 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Prestige Elysian | Ganesh Chaturthi Donation</title>
@@ -75,8 +74,6 @@ placeholder="Enter flat number" required>
 placeholder="Enter amount" required>
 
 <div class="note">Your UPI account will be selected automatically based on your flat number.</div>
-
-<button type="button" class="pay" id="pay">💳 PAY VIA UPI</button>
 <div id="iphonePay" class="iphonePay">
   <div class="iphoneTitle">💳 Select your UPI App</div>
   <div class="iphoneText">Choose your preferred UPI app. This option works on Android and iPhone.</div>
@@ -87,15 +84,14 @@ placeholder="Enter amount" required>
     <button type="button" class="appBtn" data-app="bhim">BHIM</button>
   </div>
   <div class="upiBox">
-    <span id="upiDisplay">Enter flat number</span>
+    <span id="upiDisplay"></span>
     <button type="button" id="copyUpi">COPY UPI ID</button>
   </div>
 </div>
 <div id="status" class="status"></div>
 
 <label for="utr">UPI Transaction ID / UTR *</label>
-<input id="utr" name="utr" type="text" inputmode="numeric" minlength="6" maxlength="6"
-pattern="[0-9]{6}" placeholder="Enter 6-digit transaction reference number" required>
+<input id="utr" name="utr" type="text" inputmode="numeric" minlength="6" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit transaction reference number" required>
 
 <button class="submit" type="submit">SUBMIT DONATION</button>
 <div class="note">Please complete the UPI payment before entering your UTR and submitting.</div>
@@ -164,15 +160,7 @@ document.querySelectorAll(".appBtn").forEach(btn=>{
   btn.addEventListener("click",()=>openSelectedApp(btn.dataset.app));
 });
 updateUPIDisplay();
-document.getElementById("utr").addEventListener("input", function(){this.value=this.value.replace(/\D/g,"").slice(0,6)});
-
-document.getElementById("pay").onclick=()=>{
-  if(!basic())return;
-  const pa=Number(flat.value)<=2999?UPI1:UPI2;
-  const url=`upi://pay?pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(RECIPIENT)}&am=${Number(amount.value).toFixed(2)}&cu=INR`;
-  show("success",`Opening UPI app for ₹${Number(amount.value).toLocaleString("en-IN")} payment…`);
-  window.location.href=url;
-};
+document.getElementById("utr").addEventListener("input",function(){this.value=this.value.replace(/\D/g,"").slice(0,6)});
 form.onsubmit=async e=>{
   e.preventDefault();
   if(!basic())return;
