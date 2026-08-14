@@ -76,7 +76,7 @@ placeholder="Enter amount" required>
 <div class="note">Your UPI account will be selected automatically based on your flat number.</div>
 <div id="iphonePay" class="iphonePay">
   <div class="iphoneTitle">💳 Select your UPI App</div>
-  <div class="iphoneText">Choose your preferred UPI app. This option works on Android and iPhone.</div>
+  <div class="iphoneText">Choose your preferred UPI app. We will copy the UPI ID for you. Open the app and paste the UPI ID to pay. This avoids payment-link limit issues.</div>
   <div class="upiApps">
     <button type="button" class="appBtn" data-app="gpay">Google Pay</button>
     <button type="button" class="appBtn" data-app="phonepe">PhonePe</button>
@@ -138,24 +138,26 @@ async function copyUPI(){
 }
 document.getElementById("copyUpi").onclick=async()=>{ if(!basic()) return; await copyUPI(); };
 
-function openSelectedApp(app){
+async function openSelectedApp(app){
   if(!basic()) return;
   const pa=selectedUPI();
-  const am=Number(amount.value).toFixed(2);
-  const common=`pa=${encodeURIComponent(pa)}&pn=${encodeURIComponent(RECIPIENT)}&am=${am}&cu=INR`;
-  let url;
-  if(app==="gpay"){
-    url=`gpay://upi/pay?${common}`;
-  }else if(app==="phonepe"){
-    url=`phonepe://pay?${common}`;
-  }else if(app==="paytm"){
-    url=`paytmmp://pay?${common}`;
-  }else{
-    url=`bhim://pay?${common}`;
+  if(!pa)return;
+
+  try{
+    await navigator.clipboard.writeText(pa);
+    show("success","UPI ID copied. Open " + appName(app) + " and paste the UPI ID to make the payment.");
+  }catch(e){
+    show("success","Please open " + appName(app) + " and pay using this UPI ID: " + pa);
   }
-  show("success","Opening selected UPI app…");
-  window.location.href=url;
 }
+
+function appName(app){
+  if(app==="gpay") return "Google Pay";
+  if(app==="phonepe") return "PhonePe";
+  if(app==="paytm") return "Paytm";
+  return "BHIM";
+}
+
 document.querySelectorAll(".appBtn").forEach(btn=>{
   btn.addEventListener("click",()=>openSelectedApp(btn.dataset.app));
 });
