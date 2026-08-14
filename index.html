@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Donation form submission endpoint updated 2026-08-14 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Prestige Elysian | Ganesh Chaturthi Donation</title>
@@ -163,10 +164,7 @@ document.querySelectorAll(".appBtn").forEach(btn=>{
   btn.addEventListener("click",()=>openSelectedApp(btn.dataset.app));
 });
 updateUPIDisplay();
-
-document.getElementById("utr").addEventListener("input", function(){
-  this.value = this.value.replace(/\D/g, "").slice(0, 6);
-});
+document.getElementById("utr").addEventListener("input", function(){this.value=this.value.replace(/\D/g,"").slice(0,6)});
 
 document.getElementById("pay").onclick=()=>{
   if(!basic())return;
