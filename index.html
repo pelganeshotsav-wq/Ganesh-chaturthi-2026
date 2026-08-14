@@ -138,7 +138,7 @@ async function copyUPI(){
 }
 document.getElementById("copyUpi").onclick=async()=>{ if(!basic()) return; await copyUPI(); };
 
-function openSelectedApp(app){
+async function openSelectedApp(app){
   if(!basic()) return;
 
   const pa = selectedUPI();
@@ -148,27 +148,14 @@ function openSelectedApp(app){
     return;
   }
 
-  // Open the selected UPI app with only the recipient details.
-  // The donation amount is intentionally NOT included.
-  const params =
-    "pa=" + encodeURIComponent(pa) +
-    "&pn=" + encodeURIComponent(RECIPIENT) +
-    "&cu=INR";
+  const name = appName(app);
 
-  let url;
-
-  if(app === "gpay"){
-    url = "tez://upi/pay?" + params;
-  }else if(app === "phonepe"){
-    url = "phonepe://pay?" + params;
-  }else if(app === "paytm"){
-    url = "paytmmp://pay?" + params;
-  }else{
-    url = "bhim://pay?" + params;
+  try{
+    await navigator.clipboard.writeText(pa);
+    show("success", name + " selected. UPI ID copied. Open " + name + " and paste the UPI ID to pay.");
+  }catch(e){
+    show("success", name + " selected. Please copy this UPI ID and open " + name + ": " + pa);
   }
-
-  show("success","Opening " + appName(app) + "…");
-  window.location.href = url;
 }
 
 function appName(app){
