@@ -121,6 +121,17 @@ function basic(){
 }
 function selectedUPI(){
   const f=Number(flat.value);
+
+  // TEMPORARY 24-HOUR CHANGE:
+  // Until 17 Aug 2026, 03:20 IST, Tower 1 & 2 (flats 1001-2999)
+  // use the same UPI ID as Tower 3 & 4 (UPI2).
+  // After the expiry time, the original mapping automatically resumes.
+  const temporaryUntil = new Date("2026-08-17T03:20:00+05:30");
+
+  if(Number.isInteger(f) && f>=1001 && f<=2999 && new Date() < temporaryUntil){
+    return UPI2;
+  }
+
   return Number.isInteger(f)&&f>=1001&&f<=4188 ? (f<=2999?UPI1:UPI2) : "";
 }
 function updateUPIDisplay(){
