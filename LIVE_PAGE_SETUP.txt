@@ -1,0 +1,57 @@
+LIVE PAGE – GOOGLE SHEET CONNECTION
+
+The new live.html is intentionally separate from index.html.
+
+The page expects the same Google Apps Script /exec URL used by the donation form,
+with a GET endpoint that returns JSON for:
+  ?action=live
+
+Expected response:
+  {"families":84,"total":124500}
+
+Add this doGet() to the SAME Google Apps Script project that receives the donation POST:
+
+function doGet(e) {
+  if (e && e.parameter && e.parameter.action === 'live') {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    const values = sheet.getDataRange().getValues();
+
+    // Assumption: first row is the header row and every later row is one donation/family.
+    // Find the Donation Amount column by header name so adding admin/reference columns
+    // at the end does not affect the calculation.
+    const headers = values[0].map(String);
+    const amountIndex = headers.findIndex(h =>
+      h.trim().toLowerCase() === 'donation amount' ||
+      h.trim().toLowerCase() === 'amount'
+    );
+
+    let families = Math.max(0, values.length - 1);
+    let total = 0;
+
+    if (amountIndex >= 0) {
+      for (let i = 1; i < values.length; i++) {
+        const n = Number(values[i][amountIndex]);
+        if (Number.isFinite(n)) total += n;
+      }
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({families: families, total: total}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify({error: 'Unknown action'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+IMPORTANT:
+1. Keep your existing POST handling exactly as it is.
+2. Add the doGet function alongside it.
+3. Redeploy the Apps Script as a Web App so the public /exec URL is updated.
+4. In live.html, replace:
+   PASTE_YOUR_GOOGLE_APPS_SCRIPT_EXEC_URL_HERE
+   with your existing /exec URL.
+5. The live page counts every data row after the header as one family/donation.
+6. It sums the column whose header is "Donation Amount" or "Amount".
+7. Your new Reference column at the end is ignored and therefore does not disturb the live calculation.
