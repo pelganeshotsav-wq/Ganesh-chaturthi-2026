@@ -9,7 +9,7 @@
 body{background:radial-gradient(circle at top,#fff4cf 0%,#f8d79b 35%,#d98236 100%);font-family:Georgia,"Times New Roman",serif;color:#5e241c;overflow-x:hidden}
 .page{width:100%;min-height:100vh;display:flex;justify-content:center;padding:18px 12px 30px}
 .card{width:100%;max-width:520px;background:linear-gradient(180deg,rgba(255,250,231,.96),rgba(255,244,210,.95));border-radius:26px;box-shadow:0 18px 45px rgba(94,36,28,.25);overflow:hidden;position:relative}
-.header{text-align:center;padding:28px 20px 18px}.om{font-size:24px;margin-bottom:5px}.title{font-size:30px;font-weight:700;letter-spacing:.5px;margin:0}.subtitle{font-size:14px;margin-top:7px;color:#8a5230}
+ .header{text-align:center;padding:24px 20px 18px}.om{font-size:24px;margin-bottom:5px}.title{font-size:30px;font-weight:700;letter-spacing:.5px;margin:0}.subtitle{font-size:14px;margin-top:7px;color:#8a5230}
 .shloka-box{margin:4px 18px 18px;padding:18px 15px;border-radius:18px;background:linear-gradient(135deg,#7e2f19,#a9461d);color:#fff5d7;text-align:center;box-shadow:0 8px 20px #5e241c33;min-height:125px;display:flex;align-items:center;justify-content:center}
 .shloka{font-size:17px;line-height:1.75;transition:opacity .5s ease}
 .section{padding:0 14px}.live{padding:14px 12px 18px;border-radius:20px;background:linear-gradient(135deg,#8d351b,#b84e20);color:white;box-shadow:0 10px 24px #5e241c33}
@@ -25,24 +25,60 @@ button{width:100%;border:0;border-radius:15px;padding:14px 18px;font:700 16px Ar
 .floating{position:fixed;inset:0;pointer-events:none;overflow:hidden}.petal{position:absolute;top:-20px;font-size:16px;animation:fall linear infinite;opacity:.7}
 .petal:nth-child(1){left:7%;animation-duration:9s}.petal:nth-child(2){left:27%;animation-duration:12s;animation-delay:-5s}.petal:nth-child(3){left:51%;animation-duration:10s;animation-delay:-2s}.petal:nth-child(4){left:76%;animation-duration:13s;animation-delay:-7s}.petal:nth-child(5){left:92%;animation-duration:11s;animation-delay:-3s}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}
-@media(max-width:390px){.page{padding:10px 8px 20px}.card{border-radius:22px}.header{padding:23px 15px 15px}.title{font-size:26px}.subtitle{font-size:13px}.shloka-box{margin-left:12px;margin-right:12px}.shloka{font-size:15px}.stats{gap:7px}.stat{padding-left:6px;padding-right:6px}.stat .num{font-size:22px}.stat .label{font-size:9px}}
+@media(max-width:390px){.ganesh-icon{width:72px;height:72px;margin-top:-50px}
+  
+  
+.page{padding:10px 8px 20px}.card{border-radius:22px}.header{padding:23px 15px 15px}.title{font-size:26px}.subtitle{font-size:13px}.shloka-box{margin-left:12px;margin-right:12px}.shloka{font-size:15px}.stats{gap:7px}.stat{padding-left:6px;padding-right:6px}.stat .num{font-size:22px}.stat .label{font-size:9px}}
+
+
+
+
+
+
+
+
+
+.live:before,.live:after{
+  content:"✦";
+  position:absolute;
+  color:#ffd979;
+  font-size:18px;
+  opacity:.8;
+}
+.live{position:relative}
+.live:before{left:12px;top:10px}
+.live:after{right:12px;top:10px}
+.live-diya{margin-left:5px}
+
+.cover{width:100%;height:220px;object-fit:cover;display:block}
+.ganesh-icon{width:82px;height:82px;margin:-58px auto 10px;position:relative;z-index:5}
+.ganesh-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:4px solid #fff5d7;box-shadow:0 5px 16px rgba(94,36,28,.28)}
 </style>
 </head>
 <body>
 <div class="floating"><div class="petal">🌸</div><div class="petal">🌼</div><div class="petal">🌸</div><div class="petal">🌼</div><div class="petal">🌸</div></div>
 <div class="page"><div class="card">
-<header class="header"><div class="om">ॐ</div><h1 class="title">Ganesh Chaturthi 2026</h1><div class="subtitle">Prestige Elysian</div></header>
+<header class="header">
+  <div class="ganesh-icon"><img src="ganesh-icon.jpg" alt="Lord Ganesha"></div>
+  <div class="om">ॐ</div>
+  <h1 class="title">Ganesh Chaturthi 2026</h1>
+  <div class="subtitle">Prestige Elysian</div>
+</header>
 <div class="shloka-box"><div id="shloka" class="shloka">॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ॥<br>॥ निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥</div></div>
 <section class="section"><div class="live">
-<div class="live-head"><span class="live-dot"></span>Community Celebration • Live</div>
+<div class="live-head">
+  🪔 <span class="live-dot"></span>
+  Community Celebration • Live
+  <span class="live-diya">🪔</span>
+</div>
 <div class="stats">
 <div class="stat"><div id="families" class="num">—</div><div class="label">FAMILIES CONTRIBUTED</div><div id="familyProgress" class="sub-progress">— / 548</div><div class="progress-track"><div id="familyBar" class="progress-fill"></div></div><div id="familyPercent" class="percentage">—</div></div>
-<div class="stat"><div id="total" class="num">—</div><div class="label">DONATIONS RAISED</div><div id="donationTarget" class="sub-progress">Target ₹3,00,000</div><div class="progress-track"><div id="donationBar" class="progress-fill"></div></div><div id="donationPercent" class="percentage">—</div></div>
+<div class="stat"><div id="total" class="num">—</div><div class="label">CONTRIBUTION COLLECTED</div><div id="donationTarget" class="sub-progress">Target ₹3,00,000</div><div class="progress-track"><div id="donationBar" class="progress-fill"></div></div><div id="donationPercent" class="percentage">—</div></div>
 </div>
 <div class="target-message">🙏 Together, let's bring Bappa's blessings to our community.</div>
 <div id="updated" class="updated">Connecting to live data…</div>
 </div></section>
-<div class="cta"><p>Every contribution makes our celebration brighter and more memorable.</p><button id="continueBtn">CONTRIBUTE FOR BAPPA 🙏</button></div>
+<div class="cta"><p>Every contribution makes our celebration brighter and more memorable.</p><button id="continueBtn">CONTRIBUTE FOR GANESHOTSAV 🙏</button></div>
 <div class="footer">Ganpati Bappa Morya! 🙏<br>Together as one community, let's celebrate Bappa with devotion and joy.</div>
 </div></div>
 <script>
