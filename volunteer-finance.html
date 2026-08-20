@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ganeshotsav 2026 | Volunteer Finance</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 16px;
+}
+
+.header {
+    background: linear-gradient(135deg, #7b1fa2, #e65100);
+    color: white;
+    padding: 28px 18px;
+    border-radius: 0 0 24px 24px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    opacity: 0.9;
+}
+
+.section-title {
+    margin: 28px 0 12px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.card-label {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.card-value {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.progress-card {
+    margin-top: 12px;
+}
+
+.progress-bg {
+    height: 14px;
+    background: #e5e5e5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #7b1fa2, #e65100);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.person {
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.person-name {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.person-amount {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.budget-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.budget-card {
+    background: white;
+    border-radius: 18px;
+    padding: 17px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.budget-category {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.budget-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin: 7px 0;
+}
+
+.actual {
+    font-weight: 700;
+}
+
+.balance {
+    font-weight: 700;
+}
+
+.positive {
+    color: #16803c;
+}
+
+.negative {
+    color: #c62828;
+}
+
+.total-budget {
+    margin-top: 15px;
+    background: #222;
+    color: white;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.action {
+    margin: 28px 0;
+    text-align: center;
+}
+
+button {
+    border: none;
+    border-radius: 14px;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primary-btn {
+    color: white;
+    background: linear-gradient(135deg, #7b1fa2, #e65100);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.secondary-btn {
+    background: #eee;
+    color: #333;
+}
+
+.form-container {
+    display: none;
+}
+
+.form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 11px;
+    font-size: 15px;
+    background: white;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.file-note {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.form-buttons button {
+    flex: 1;
+}
+
+.message {
+    display: none;
+    padding: 13px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.success {
+    background: #e7f6ec;
+    color: #176b32;
+}
+
+.error {
+    background: #fdeaea;
+    color: #a52020;
+}
+
+.loading {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #888;
+    font-size: 12px;
+}
+
+.refresh {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+@media (max-width: 800px) {
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .people {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 24px 14px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 19px;
+        margin-top: 24px;
+    }
+
+    .card-value {
+        font-size: 23px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .action button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🪔 Ganeshotsav 2026</h1>
+    <p>Volunteer Finance Dashboard</p>
+    <div class="refresh" id="lastUpdated">
+        Loading...
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboard">
+
+        <div class="section-title">
+            💰 Fund Status
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-label">
+                    Total Collected
+                </div>
+                <div class="card-value" id="totalCollected">
+                    ₹0
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">
+                    Total Budget
+                </div>
+                <div class="card-value">
+                    ₹2,90,000
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">
+                    Still to Collect
+                </div>
+                <div class="card-value" id="stillToCollect">
+                    ₹0
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card progress-card">
+
+            <div class="card-label">
+                Donation Progress
+            </div>
+
+            <div class="progress-bg">
+                <div
+                    class="progress-bar"
+                    id="donationProgress">
+                </div>
+            </div>
+
+            <div
+                class="progress-text"
+                id="progressText">
+                0%
+            </div>
+
+        </div>
+
+
+        <!-- MONEY WITH PEOPLE -->
+
+        <div class="section-title">
+            👥 Money With People
+        </div>
+
+        <div
+            class="people"
+            id="peopleContainer">
+
+            <div class="loading">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div class="section-title">
+            📊 Budget — Estimated vs Actual
+        </div>
+
+        <div
+            class="budget-grid"
+            id="budgetContainer">
+
+            <div class="loading">
+                Loading budget...
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="total-budget">
+
+            <div class="total-row">
+                <span>Estimated Budget</span>
+                <strong id="totalEstimated">
+                    ₹2,90,000
+                </strong>
+            </div>
+
+            <div class="total-row">
+                <span>Actual Expense</span>
+                <strong id="totalActual">
+                    ₹0
+                </strong>
+            </div>
+
+            <div class="total-row">
+                <span>Budget Balance</span>
+                <strong id="totalBalance">
+                    ₹0
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="action">
+
+            <button
+                class="primary-btn"
+                onclick="showExpenseForm()">
+
+                ➕ Submit Expense
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EXPENSE FORM -->
+
+    <div
+        id="expensePage"
+        class="form-container">
+
+        <div class="section-title">
+            ➕ Submit Expense
+        </div>
+
+        <div class="form-card">
+
+            <div
+                id="formMessage"
+                class="message">
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Expense Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="expense"
+                    placeholder="Example: Tent Advance">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Category *
+                </label>
+
+                <select id="category">
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Amount *
+                </label>
+
+                <input
+                    type="number"
+                    id="amount"
+                    min="1"
+                    placeholder="Enter amount">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Done By *
+                </label>
+
+                <select id="doneBy">
+
+                    <option value="">
+                        Select Volunteer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Reimbursement Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="reimbursementNo"
+                    maxlength="10"
+                    inputmode="numeric"
+                    placeholder="10 digit mobile number">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Invoice
+                </label>
+
+                <input
+                    type="file"
+                    id="invoice"
+                    accept="image/*,.pdf">
+
+                <div class="file-note">
+                    Optional. Invoice will be saved to the finance Drive folder.
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Comments
+                </label>
+
+                <textarea
+                    id="comments"
+                    placeholder="Optional comments">
+                </textarea>
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    class="secondary-btn"
+                    onclick="showDashboard()">
+
+                    ← Back
+
+                </button>
+
+                <button
+                    class="primary-btn"
+                    id="submitButton"
+                    onclick="submitExpense()">
+
+                    Submit Expense
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+    Ganesh Chaturthi 2026 · Prestige Elysian
+</div>
+
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbz3yb6S_qeYI4BYjPChbf2eRbIyPlgu3eRitwxb3f8SgDPVo51ed1GzFQtzAd-46rrM/exec";
+
+
+let configData = null;
+
+
+function formatMoney(value) {
+
+    return "₹" +
+        Number(value || 0).toLocaleString("en-IN", {
+            maximumFractionDigits: 0
+        });
+
+}
+
+
+function showDashboard() {
+
+    document.getElementById("dashboard").style.display = "block";
+
+    document.getElementById("expensePage").style.display = "none";
+
+}
+
+
+function showExpenseForm() {
+
+    document.getElementById("dashboard").style.display = "none";
+
+    document.getElementById("expensePage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+async function loadConfig() {
+
+    try {
+
+        const response =
+            await fetch(API_URL + "?action=config");
+
+        const data =
+            await response.json();
+
+        configData = data;
+
+        populateDropdowns();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showFormMessage(
+            "Unable to load form configuration.",
+            false
+        );
+
+    }
+
+}
+
+
+function populateDropdowns() {
+
+    if (!configData) {
+        return;
+    }
+
+    const category =
+        document.getElementById("category");
+
+    const doneBy =
+        document.getElementById("doneBy");
+
+
+    category.innerHTML =
+        '<option value="">Select Category</option>';
+
+    configData.categories.forEach(function(item) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = item;
+
+        option.textContent = item;
+
+        category.appendChild(option);
+
+    });
+
+
+    doneBy.innerHTML =
+        '<option value="">Select Volunteer</option>';
+
+    configData.volunteers.forEach(function(item) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = item;
+
+        option.textContent = item;
+
+        doneBy.appendChild(option);
+
+    });
+
+}
+
+
+async function loadFinance() {
+
+    try {
+
+        const response =
+            await fetch(API_URL + "?action=finance");
+
+        if (!response.ok) {
+            throw new Error(
+                "API returned " + response.status
+            );
+        }
+
+        const data =
+            await response.json();
+
+        if (!data.success) {
+            throw new Error(
+                data.error || "Finance API error"
+            );
+        }
+
+        updateDashboard(data);
+
+        document.getElementById(
+            "lastUpdated"
+        ).textContent =
+            "Last updated: " +
+            new Date().toLocaleTimeString(
+                "en-IN",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+    } catch (error) {
+
+        console.error(
+            "Finance loading error:",
+            error
+        );
+
+    }
+
+}
+
+
+function updateDashboard(data) {
+
+    const donations =
+        data.donations;
+
+    const expenses =
+        data.expenses;
+
+
+    document.getElementById(
+        "totalCollected"
+    ).textContent =
+        formatMoney(donations.total);
+
+
+    document.getElementById(
+        "stillToCollect"
+    ).textContent =
+        formatMoney(donations.remaining);
+
+
+    const percentage =
+        Math.min(
+            100,
+            Math.max(
+                0,
+                Number(donations.percentage || 0)
+            )
+        );
+
+
+    document.getElementById(
+        "donationProgress"
+    ).style.width =
+        percentage + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        percentage.toFixed(1) +
+        "% of budget collected";
+
+
+    document.getElementById(
+        "totalEstimated"
+    ).textContent =
+        formatMoney(expenses.budget);
+
+
+    document.getElementById(
+        "totalActual"
+    ).textContent =
+        formatMoney(expenses.total);
+
+
+    const balanceElement =
+        document.getElementById("totalBalance");
+
+    balanceElement.textContent =
+        formatMoney(expenses.balance);
+
+    balanceElement.className =
+        expenses.balance >= 0
+            ? "positive"
+            : "negative";
+
+
+    renderPeople(
+        data.moneyWithPeople
+    );
+
+
+    renderBudget(
+        data.budgetCategories
+    );
+
+}
+
+
+function renderPeople(data) {
+
+    const container =
+        document.getElementById(
+            "peopleContainer"
+        );
+
+    container.innerHTML = "";
+
+    data.people.forEach(function(person) {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "person";
+
+        div.innerHTML =
+
+            '<div class="person-name">' +
+            escapeHtml(person.name) +
+            '</div>' +
+
+            '<div class="person-amount">' +
+            formatMoney(person.amount) +
+            '</div>';
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function renderBudget(categories) {
+
+    const container =
+        document.getElementById(
+            "budgetContainer"
+        );
+
+    container.innerHTML = "";
+
+    categories.forEach(function(item) {
+
+        const balance =
+            Number(item.balance || 0);
+
+        const div =
+            document.createElement("div");
+
+        div.className = "budget-card";
+
+        div.innerHTML =
+
+            '<div class="budget-category">' +
+            escapeHtml(item.category) +
+            '</div>' +
+
+            '<div class="budget-row">' +
+            '<span>Estimated</span>' +
+            '<strong>' +
+            formatMoney(item.estimated) +
+            '</strong>' +
+            '</div>' +
+
+            '<div class="budget-row">' +
+            '<span>Actual</span>' +
+            '<strong class="actual">' +
+            formatMoney(item.actual) +
+            '</strong>' +
+            '</div>' +
+
+            '<div class="budget-row">' +
+            '<span>Balance</span>' +
+            '<strong class="balance ' +
+            (balance >= 0
+                ? "positive"
+                : "negative") +
+            '">' +
+            formatMoney(balance) +
+            '</strong>' +
+            '</div>';
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+async function submitExpense() {
+
+    const button =
+        document.getElementById(
+            "submitButton"
+        );
+
+    const expense =
+        document.getElementById(
+            "expense"
+        ).value.trim();
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value;
+
+    const amount =
+        document.getElementById(
+            "amount"
+        ).value;
+
+    const doneBy =
+        document.getElementById(
+            "doneBy"
+        ).value;
+
+    const reimbursementNo =
+        document.getElementById(
+            "reimbursementNo"
+        ).value.trim();
+
+    const comments =
+        document.getElementById(
+            "comments"
+        ).value.trim();
+
+    const invoiceInput =
+        document.getElementById(
+            "invoice"
+        );
+
+
+    if (!expense) {
+
+        showFormMessage(
+            "Please enter the expense name.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    if (!category) {
+
+        showFormMessage(
+            "Please select a category.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    if (!amount || Number(amount) <= 0) {
+
+        showFormMessage(
+            "Please enter a valid amount.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    if (!doneBy) {
+
+        showFormMessage(
+            "Please select who made the payment.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    if (
+        reimbursementNo &&
+        !/^[0-9]{10}$/.test(
+            reimbursementNo
+        )
+    ) {
+
+        showFormMessage(
+            "Reimbursement number must be 10 digits.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "Submitting...";
+
+
+    try {
+
+        let invoiceBase64 = "";
+        let invoiceFileName = "";
+
+
+        if (
+            invoiceInput.files &&
+            invoiceInput.files.length > 0
+        ) {
+
+            const file =
+                invoiceInput.files[0];
+
+            invoiceFileName =
+                file.name;
+
+            invoiceBase64 =
+                await fileToBase64(file);
+
+        }
+
+
+        const payload = {
+
+            action: "expense",
+
+            expense: expense,
+
+            category: category,
+
+            amount: amount,
+
+            doneBy: doneBy,
+
+            reimbursementNo:
+                reimbursementNo,
+
+            comments: comments,
+
+            invoiceBase64:
+                invoiceBase64,
+
+            invoiceFileName:
+                invoiceFileName
+
+        };
+
+
+        const response =
+            await fetch(API_URL, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(payload)
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            throw new Error(
+                result.error ||
+                "Expense submission failed"
+            );
+
+        }
+
+
+        showFormMessage(
+            "Expense submitted successfully!",
+            true
+        );
+
+
+        document.getElementById(
+            "expense"
+        ).value = "";
+
+        document.getElementById(
+            "category"
+        ).value = "";
+
+        document.getElementById(
+            "amount"
+        ).value = "";
+
+        document.getElementById(
+            "doneBy"
+        ).value = "";
+
+        document.getElementById(
+            "reimbursementNo"
+        ).value = "";
+
+        document.getElementById(
+            "comments"
+        ).value = "";
+
+        document.getElementById(
+            "invoice"
+        ).value = "";
+
+
+        setTimeout(function() {
+
+            showDashboard();
+
+            loadFinance();
+
+        }, 1200);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showFormMessage(
+            error.message ||
+            "Something went wrong.",
+            false
+        );
+
+    } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Submit Expense";
+
+    }
+
+}
+
+
+function fileToBase64(file) {
+
+    return new Promise(function(resolve, reject) {
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function() {
+
+            resolve(
+                reader.result
+            );
+
+        };
+
+        reader.onerror = function() {
+
+            reject(
+                new Error(
+                    "Unable to read invoice"
+                )
+            );
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+function showFormMessage(
+    message,
+    success
+) {
+
+    const box =
+        document.getElementById(
+            "formMessage"
+        );
+
+    box.textContent =
+        message;
+
+    box.className =
+        "message " +
+        (success
+            ? "success"
+            : "error");
+
+    box.style.display =
+        "block";
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+// INITIAL LOAD
+
+loadConfig();
+
+loadFinance();
+
+
+// AUTO REFRESH
+
+setInterval(
+    loadFinance,
+    30000
+);
+
+</script>
+
+</body>
+</html>
