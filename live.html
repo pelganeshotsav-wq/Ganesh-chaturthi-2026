@@ -1,395 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ganesh Chaturthi 2026 | Prestige Elysian</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#8b3f12">
+<title>Prestige Elysian | Ganeshotsav 2026</title>
 <style>
-
-*{
-  box-sizing:border-box;
+:root{
+  --maroon:#6e1f12; --deep:#3b160e; --gold:#d99a2b; --cream:#fff6df;
+  --orange:#c95716; --green:#2d7b50;
 }
-
-html,body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  background:
-    radial-gradient(circle at top,#fff4cf 0%,#f8d79b 35%,#d98236 100%);
-  font-family:Georgia,"Times New Roman",serif;
-  color:#5e241c;
+  margin:0; min-height:100vh; font-family:Georgia,"Times New Roman",serif;
+  color:var(--deep); background:
+  radial-gradient(circle at 50% 10%,#fff8df 0,#f8dfb0 38%,#d99a58 100%);
   overflow-x:hidden;
 }
-
-
-/* =========================================
-   MAIN CONTAINER
-========================================= */
-
-.page{
-  width:100%;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  padding:18px 12px 30px;
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.16;
+  background-image:radial-gradient(#7b3b14 1px,transparent 1px);
+  background-size:18px 18px; animation:drift 18s linear infinite;
 }
-
+.page{max-width:560px;margin:auto;padding:12px 14px 30px;position:relative}
 .card{
-  width:100%;
-  max-width:520px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,250,231,.96),
-      rgba(255,244,210,.95)
-    );
-  border-radius:26px;
-  box-shadow:
-    0 18px 45px rgba(94,36,28,.25);
-  overflow:hidden;
-  position:relative;
+  position:relative; overflow:hidden; border-radius:28px;
+  background:rgba(255,250,237,.94); border:1px solid #dca85e;
+  box-shadow:0 14px 45px rgba(72,31,9,.24);
 }
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.header{
-  text-align:center;
-  padding:28px 20px 18px;
+.hero{position:relative;text-align:center;padding:20px 18px 16px}
+.hero img{
+  width:150px;height:150px;object-fit:cover;border-radius:50%;
+  border:5px solid #fff1c9; box-shadow:0 8px 28px #5c250733;
 }
-
-.om{
-  font-size:24px;
-  margin-bottom:5px;
+.om{font-size:25px;color:var(--maroon);font-weight:700;margin:8px 0 2px}
+h1{font-size:27px;margin:3px 0 2px;color:var(--maroon)}
+.subtitle{font-family:Arial,sans-serif;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;color:#815126}
+.divider{display:flex;align-items:center;gap:10px;justify-content:center;color:var(--gold);margin:10px 0}
+.divider:before,.divider:after{content:"";height:1px;background:#d7a65a;flex:1}
+.bell{
+  position:absolute;top:4px;width:42px;height:52px;transform-origin:50% 0;
+  animation:swing 3.4s ease-in-out infinite;
 }
-
-.title{
-  font-size:30px;
-  font-weight:700;
-  letter-spacing:.5px;
-  margin:0;
+.bell.left{left:18px}.bell.right{right:18px;animation-delay:-1.7s}
+.bell:before{
+  content:"";position:absolute;left:7px;top:7px;width:28px;height:31px;
+  background:linear-gradient(#f6c75d,#b66a17);border-radius:17px 17px 8px 8px;
+  border:2px solid #8a4c10;
 }
-
-.subtitle{
-  font-size:14px;
-  margin-top:7px;
-  color:#8a5230;
+.bell:after{
+  content:"";position:absolute;left:17px;top:34px;width:9px;height:9px;
+  background:#8a4c10;border-radius:50%;box-shadow:0 6px 0 -2px #c28a25;
 }
-
-
-/* =========================================
-   SHLOKA
-========================================= */
-
-.shloka-box{
-  margin:4px 18px 18px;
-  padding:18px 15px;
-  border-radius:18px;
-  background:
-    linear-gradient(
-      135deg,
-      #7e2f19,
-      #a9461d
-    );
-  color:#fff5d7;
-  text-align:center;
-  box-shadow:
-    0 8px 20px #5e241c33;
-  min-height:125px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.section{padding:10px 18px 16px}
+.section-title{text-align:center;font-size:18px;color:var(--maroon);font-weight:700;margin:4px 0 13px}
+.schedule{display:grid;grid-template-columns:1fr;gap:8px}
+.event{
+  display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:15px;
+  background:#fff9e9;border:1px solid #e5c27d;
 }
-
+.date{min-width:88px;text-align:center;font-family:Arial,sans-serif}
+.date b{display:block;font-size:17px;color:var(--maroon)}
+.date span{font-size:11px;color:#8a6135}
+.event-text b{display:block;font-size:15px}.event-text span{font-size:12px;color:#76583a}
 .shloka{
-  font-size:17px;
-  line-height:1.75;
-  transition:opacity .5s ease;
+  text-align:center;line-height:1.7;font-size:16px;color:#5b2d18;
+  padding:12px 8px; min-height:96px; display:flex;align-items:center;justify-content:center;
+  animation:fade 7s ease-in-out infinite;
 }
-
-
-/* =========================================
-   LIVE SECTION
-========================================= */
-
-.section{
-  padding:0 14px;
-}
-
 .live{
-  padding:14px 12px 18px;
-  border-radius:20px;
-  background:
-    linear-gradient(
-      135deg,
-      #8d351b,
-      #b84e20
-    );
-  color:white;
-  box-shadow:
-    0 10px 24px #5e241c33;
+  margin:2px 0 8px;padding:16px 12px;border-radius:22px;
+  background:linear-gradient(145deg,#6e1f12,#9d3d16);color:#fff7e2;
+  box-shadow:inset 0 1px #ffffff2b,0 10px 24px #5e241c33;
 }
-
-.live-head{
-  text-align:center;
-  font-family:Arial,sans-serif;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  opacity:.95;
-}
-
-.live-dot{
-  display:inline-block;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#8ff0ad;
-  margin-right:5px;
-  box-shadow:0 0 10px #8ff0ad;
-  animation:pulse 1.5s infinite;
-}
-
-
-/* =========================================
-   STAT CARDS
-========================================= */
-
-.stats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:13px;
-}
-
-.stat{
-  background:#fff9e91a;
-  border:1px solid #ffffff30;
-  border-radius:17px;
-  padding:15px 9px 14px;
-  text-align:center;
-}
-
-.stat .num{
-  font-family:Arial,sans-serif;
-  font-weight:800;
-  font-size:25px;
-  line-height:1.15;
-}
-
-.stat .label{
-  font-family:Arial,sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.7px;
-  margin-top:6px;
-  opacity:.95;
-}
-
-.sub-progress{
-  font-family:Arial,sans-serif;
-  font-size:11px;
-  margin-top:7px;
-  opacity:.85;
-}
-
-.progress-track{
-  height:7px;
-  margin:9px 4px 5px;
-  border-radius:10px;
-  background:#ffffff30;
-  overflow:hidden;
-}
-
-.progress-fill{
-  height:100%;
-  width:0%;
-  border-radius:10px;
-  background:
-    linear-gradient(
-      90deg,
-      #f6c75d,
-      #fff1b8
-    );
-  transition:width 1s ease;
-}
-
-.percentage{
-  font-family:Arial,sans-serif;
-  font-size:11px;
-  font-weight:700;
-  margin-top:5px;
-}
-
-
-/* =========================================
-   MESSAGE
-========================================= */
-
-.target-message{
-  text-align:center;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:13px;
-  line-height:1.5;
-  margin-top:14px;
-  color:#fff7e2;
-  opacity:.94;
-}
-
-
-/* =========================================
-   UPDATED
-========================================= */
-
-.updated{
-  text-align:center;
-  font:11px Arial,sans-serif;
-  margin-top:10px;
-  opacity:.75;
-}
-
-
-/* =========================================
-   CTA
-========================================= */
-
-.cta{
-  padding:12px 18px 18px;
-  text-align:center;
-}
-
-.cta p{
-  margin:2px 0 12px;
-  font-size:14px;
-  color:#70452a;
-}
-
+.live-head{text-align:center;font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.9}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#8ff0ad;margin-right:5px;box-shadow:0 0 10px #8ff0ad;animation:pulse 1.5s infinite}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.stat{background:#fff9e91a;border:1px solid #ffffff30;border-radius:17px;padding:14px 8px;text-align:center}
+.stat .num{font-family:Arial,sans-serif;font-weight:800;font-size:26px;line-height:1.15}
+.stat .label{font-size:11px;letter-spacing:.5px;margin-top:4px;opacity:.9}
+.updated{text-align:center;font:11px Arial,sans-serif;margin-top:10px;opacity:.75}
+.cta{padding:10px 18px 20px;text-align:center}
+.cta p{margin:2px 0 12px;font-size:14px;color:#70452a}
 button{
-  width:100%;
-  border:0;
-  border-radius:15px;
-  padding:14px 18px;
-  font:700 16px Arial,sans-serif;
-  color:white;
-  background:
-    linear-gradient(
-      135deg,
-      #e48618,
-      #b94313
-    );
-  box-shadow:
-    0 7px 18px #8b3c1e33;
-  cursor:pointer;
+  width:100%;border:0;border-radius:15px;padding:14px 18px;font:700 16px Arial,sans-serif;
+  color:white;background:linear-gradient(135deg,#e48618,#b94313);box-shadow:0 7px 18px #8b3c1e33;cursor:pointer
 }
-
-button:active{
-  transform:scale(.98);
+.floating{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-20px;font-size:16px;animation:fall linear infinite;opacity:.7}
+.petal:nth-child(1){left:7%;animation-duration:9s}.petal:nth-child(2){left:27%;animation-duration:12s;animation-delay:-5s}
+.petal:nth-child(3){left:51%;animation-duration:10s;animation-delay:-2s}.petal:nth-child(4){left:76%;animation-duration:13s;animation-delay:-7s}
+.petal:nth-child(5){left:92%;animation-duration:11s;animation-delay:-3s}
+.note{font:11px Arial,sans-serif;color:#7c6045;text-align:center;padding:0 18px 6px}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@keyframes fade{0%,100%{opacity:.25}20%,80%{opacity:1}}
+@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}
+@keyframes drift{to{transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
 }
+</style>
+</head>
+<body>
+<div class="floating" aria-hidden="true">
+  <span class="petal">🌸</span><span class="petal">🌺</span><span class="petal">🌼</span>
+  <span class="petal">🌸</span><span class="petal">🌺</span>
+</div>
 
+<main class="page">
+  <div class="card">
+    <section class="hero">
+      <div class="bell left" aria-hidden="true"></div><div class="bell right" aria-hidden="true"></div>
+      <img src="ganesh-icon.jpg" alt="Lord Ganesha">
+      <div class="om">॥ श्री गणेशाय नमः ॥</div>
+      <h1>Prestige Elysian Ganeshotsav 2026</h1>
+      <div class="subtitle">Ganpati Bappa Morya 🙏</div>
+      <div class="divider">✦</div>
+    </section>
 
-/* =========================================
-   FOOTER
-========================================= */
+    <section class="section">
+      <div class="section-title">🪔 Celebration Schedule 🪔</div>
+      <div class="schedule">
+        <div class="event"><div class="date"><b>13 AUG</b><span>THURSDAY</span></div><div class="event-text"><b>🥁 Aagman</b><span>Welcoming Bappa</span></div></div>
+        <div class="event"><div class="date"><b>14 AUG</b><span>FRIDAY</span></div><div class="event-text"><b>🪔 Sthapana</b><span>Ganesh Sthapana & celebrations</span></div></div>
+        <div class="event"><div class="date"><b>15 AUG</b><span>SATURDAY</span></div><div class="event-text"><b>🌺 Visarjan</b><span>Farewell to Bappa</span></div></div>
+      </div>
+    </section>
 
-.footer{
-  text-align:center;
-  padding:4px 20px 22px;
-  color:#8a5230;
-  font-size:12px;
-  line-height:1.5;
+    <section class="section">
+      <div class="section-title">📜 Bappa's Blessings</div>
+      <div id="shloka" class="shloka">
+        ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ॥<br>
+        ॥ निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="live">
+        <div class="live-head"><span class="live-dot"></span>Community Celebration • Live</div>
+        <div class="stats">
+          <div class="stat"><div id="families" class="num">—</div><div class="label">FAMILIES DONATED</div></div>
+          <div class="stat"><div id="total" class="num">—</div><div class="label">TOTAL CONTRIBUTION</div></div>
+        </div>
+        <div id="updated" class="updated">Connecting to live data…</div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p>Every contribution, big or small, makes our celebration a little more special. ❤️</p>
+      <button id="continueBtn">🙏 CONTRIBUTE FOR GANESHOTSAV</button>
+    </section>
+    <div class="note">Live figures are refreshed automatically. Individual donor details are never shown here.</div>
+  </div>
+</main>
+
+<script>
+/*
+  LIVE DATA CONNECTION
+  --------------------
+  Once the Google Apps Script has a GET endpoint, put its /exec URL below.
+  Expected JSON:
+    { "families": 84, "total": 124500 }
+
+  Until then the page shows the safe demo values below.
+*/
+const LIVE_API_URL = "https://script.google.com/macros/s/AKfycbz3yb6S_qeYI4BYjPChbf2eRbIyPlgu3eRitwxb3f8SgDPVo51ed1GzFQtzAd-46rrM/exec";
+const DONATION_PAGE = "index.html";
+const DEMO = {families: 84, total: 124500};
+const REFRESH_MS = 30000;
+
+const familiesEl=document.getElementById("families");
+const totalEl=document.getElementById("total");
+const updatedEl=document.getElementById("updated");
+
+function formatINR(n){
+  return new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(Number(n)||0);
 }
-
-
-/* =========================================
-   FLOATING PETALS
-========================================= */
-
-.floating{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
+function animateNumber(el,to,isMoney){
+  const from=Number(el.dataset.value||0), target=Number(to)||0, start=performance.now(), duration=800;
+  function tick(now){
+    const p=Math.min(1,(now-start)/duration), eased=1-Math.pow(1-p,3), val=Math.round(from+(target-from)*eased);
+    el.textContent=isMoney?formatINR(val):val.toLocaleString("en-IN");
+    if(p<1) requestAnimationFrame(tick);
+    else el.dataset.value=target;
+  }
+  requestAnimationFrame(tick);
 }
-
-.petal{
-  position:absolute;
-  top:-20px;
-  font-size:16px;
-  animation:fall linear infinite;
-  opacity:.7;
+function render(data){
+  animateNumber(familiesEl,Math.max(0,Number(data.families)||0),false);
+  animateNumber(totalEl,Math.max(0,Number(data.total)||0),true);
+  updatedEl.textContent="Updated just now • refreshes every 30 seconds";
 }
-
-.petal:nth-child(1){
-  left:7%;
-  animation-duration:9s;
-}
-
-.petal:nth-child(2){
-  left:27%;
-  animation-duration:12s;
-  animation-delay:-5s;
-}
-
-.petal:nth-child(3){
-  left:51%;
-  animation-duration:10s;
-  animation-delay:-2s;
-}
-
-.petal:nth-child(4){
-  left:76%;
-  animation-duration:13s;
-  animation-delay:-7s;
-}
-
-.petal:nth-child(5){
-  left:92%;
-  animation-duration:11s;
-  animation-delay:-3s;
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes fall{
-  to{
-    transform:
-      translateY(110vh)
-      rotate(360deg);
+async function loadLive(){
+  if(!LIVE_API_URL || LIVE_API_URL.includes("PASTE_YOUR")){
+    render(DEMO);
+    updatedEl.textContent="Preview mode • Google Sheet live connection pending";
+    return;
+  }
+  try{
+    const r=await fetch(LIVE_API_URL+"?action=live&t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    if(typeof data.families==="undefined" || typeof data.total==="undefined") throw new Error("Invalid live data");
+    render(data);
+  }catch(e){
+    updatedEl.textContent="Live data temporarily unavailable • showing last known figures";
   }
 }
+document.getElementById("continueBtn").onclick=()=>location.href=DONATION_PAGE;
+loadLive();
+setInterval(loadLive,REFRESH_MS);
 
-@keyframes pulse{
-  50%{
-    opacity:.35;
-    transform:scale(.8);
-  }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media(max-width:390px){
-
-  .page{
-    padding:10px 8px 20px;
-  }
-
-  .card{
-    border-radius:22px;
-  }
-
-  .header{
-    padding:23px 15px 15px;
-  }
+const shlokas=[
+  "॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ॥<br>॥ निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥",
+  "॥ गजाननं भूतगणादि सेवितं ॥<br>॥ कपित्थजम्बूफलचारुभक्षणम् ॥"
+];
+let si=0;
+setInterval(()=>{si=(si+1)%shlokas.length;document.getElementById("shloka").innerHTML=shlokas[si]},7000);
+</script>
+</body>
+</html>
