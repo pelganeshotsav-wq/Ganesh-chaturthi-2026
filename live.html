@@ -9,7 +9,7 @@
 body{background:radial-gradient(circle at top,#fff4cf 0%,#f8d79b 35%,#d98236 100%);font-family:Georgia,"Times New Roman",serif;color:#5e241c;overflow-x:hidden}
 .page{width:100%;min-height:100vh;display:flex;justify-content:center;padding:18px 12px 30px}
 .card{width:100%;max-width:520px;background:linear-gradient(180deg,rgba(255,250,231,.96),rgba(255,244,210,.95));border-radius:26px;box-shadow:0 18px 45px rgba(94,36,28,.25);overflow:hidden;position:relative}
- .header{text-align:center;padding:24px 20px 18px}.om{font-size:24px;margin-bottom:5px}.title{font-size:30px;font-weight:700;letter-spacing:.5px;margin:0}.subtitle{font-size:14px;margin-top:7px;color:#8a5230}
+.header{text-align:center;padding:28px 20px 18px}.om{font-size:24px;margin-bottom:5px}.title{font-size:30px;font-weight:700;letter-spacing:.5px;margin:0}.subtitle{font-size:14px;margin-top:7px;color:#8a5230}
 .shloka-box{margin:4px 18px 18px;padding:18px 15px;border-radius:18px;background:linear-gradient(135deg,#7e2f19,#a9461d);color:#fff5d7;text-align:center;box-shadow:0 8px 20px #5e241c33;min-height:125px;display:flex;align-items:center;justify-content:center}
 .shloka{font-size:17px;line-height:1.75;transition:opacity .5s ease}
 .section{padding:0 14px}.live{padding:14px 12px 18px;border-radius:20px;background:linear-gradient(135deg,#8d351b,#b84e20);color:white;box-shadow:0 10px 24px #5e241c33}
@@ -25,60 +25,157 @@ button{width:100%;border:0;border-radius:15px;padding:14px 18px;font:700 16px Ar
 .floating{position:fixed;inset:0;pointer-events:none;overflow:hidden}.petal{position:absolute;top:-20px;font-size:16px;animation:fall linear infinite;opacity:.7}
 .petal:nth-child(1){left:7%;animation-duration:9s}.petal:nth-child(2){left:27%;animation-duration:12s;animation-delay:-5s}.petal:nth-child(3){left:51%;animation-duration:10s;animation-delay:-2s}.petal:nth-child(4){left:76%;animation-duration:13s;animation-delay:-7s}.petal:nth-child(5){left:92%;animation-duration:11s;animation-delay:-3s}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}
-@media(max-width:390px){.ganesh-icon{width:72px;height:72px;margin-top:-50px}
-  
-  
-.page{padding:10px 8px 20px}.card{border-radius:22px}.header{padding:23px 15px 15px}.title{font-size:26px}.subtitle{font-size:13px}.shloka-box{margin-left:12px;margin-right:12px}.shloka{font-size:15px}.stats{gap:7px}.stat{padding-left:6px;padding-right:6px}.stat .num{font-size:22px}.stat .label{font-size:9px}}
+@media(max-width:390px){
+.cover-icon{width:92px;height:92px}.page{padding:10px 8px 20px}.card{border-radius:22px}.header{padding:23px 15px 15px}.title{font-size:26px}.subtitle{font-size:13px}.shloka-box{margin-left:12px;margin-right:12px}.shloka{font-size:15px}.stats{gap:7px}.stat{padding-left:6px;padding-right:6px}.stat .num{font-size:22px}.stat .label{font-size:9px}}
 
+.schedule{display:grid;grid-template-columns:1fr;gap:8px;margin-top:4px}
+.event{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:15px;background:#fff9e9;border:1px solid #e5c27d}
+.date{min-width:88px;text-align:center;font-family:Arial,sans-serif}
+.date b{display:block;font-size:17px;color:#6e1f12}
+.date span{font-size:11px;color:#8a6135}
+.event-text b{display:block;font-size:15px}
+.event-text span{font-size:12px;color:#76583a}
+.section-title{text-align:center;font-size:18px;color:#6e1f12;font-weight:700;margin:4px 0 13px}
 
-
-
-
-
-
-
-
-.live:before,.live:after{
-  content:"✦";
-  position:absolute;
-  color:#ffd979;
-  font-size:18px;
-  opacity:.8;
+#continueBtn{
+  position:relative;
+  background:linear-gradient(135deg,#ffb52e 0%,#e86f12 48%,#b9360d 100%);
+  border:2px solid #ffd76a;
+  box-shadow:0 0 0 3px #fff1bd66,0 9px 26px #8b3c1e66;
+  animation:donatePulse 2s ease-in-out infinite;
+  transform:translateZ(0);
 }
-.live{position:relative}
-.live:before{left:12px;top:10px}
-.live:after{right:12px;top:10px}
-.live-diya{margin-left:5px}
+#continueBtn:before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  border-radius:18px;
+  border:2px solid #ffd76a88;
+  animation:donateGlow 2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes donatePulse{
+  0%,100%{transform:scale(1);filter:brightness(1)}
+  50%{transform:scale(1.025);filter:brightness(1.08)}
+}
+@keyframes donateGlow{
+  0%,100%{opacity:.35;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.035)}
+}
 
-.cover{width:100%;height:220px;object-fit:cover;display:block}
-.ganesh-icon{width:82px;height:82px;margin:-58px auto 10px;position:relative;z-index:5}
-.ganesh-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:4px solid #fff5d7;box-shadow:0 5px 16px rgba(94,36,28,.28)}
+.cover-icon{
+  width:110px;height:110px;object-fit:cover;border-radius:50%;
+  border:4px solid #fff1c9;
+  box-shadow:0 7px 22px #5c250733;
+  display:block;margin:0 auto 7px;
+}
+.schedule-section{padding:2px 14px 10px}
+.schedule-section .section-title{
+  font-size:15px;margin:2px 0 8px;
+}
+.schedule{display:grid;grid-template-columns:1fr;gap:5px;margin-top:0}
+.event{
+  display:flex;align-items:center;gap:8px;padding:7px 9px;
+  border-radius:11px;background:#fff9e9;border:1px solid #e5c27d;
+}
+.date{min-width:70px;text-align:center;font-family:Arial,sans-serif}
+.date b{display:block;font-size:13px;color:#6e1f12}
+.date span{font-size:9px;color:#8a6135}
+.event-text b{display:block;font-size:12px}
+.event-text span{font-size:10px;color:#76583a}
+
+.stats{gap:7px;margin-top:10px}
+.stat{padding:12px 7px 11px}
+.stat .num{font-size:23px}
+.stat .label{font-size:9px}
+.sub-progress{font-size:10px}
+.percentage{font-size:10px}
+
+.schedule-section{
+  padding-bottom:18px;
+  margin-bottom:8px;
+}
+.schedule-section + .section{
+  padding-top:10px;
+}
+
+.schedule-section{
+  padding:2px 14px 18px;
+  margin:0 0 14px;
+  border-bottom:1px solid #e2bf78;
+}
+.schedule-section + .section{
+  padding-top:14px;
+}
+.schedule-section + .section .live{
+  margin-top:0;
+}
+
+.cover-wrap{
+  width:110px;height:110px;margin:0 auto 8px;position:relative;
+}
+.cover-icon,.cover-fallback{
+  width:110px;height:110px;border-radius:50%;
+}
+.cover-fallback{
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  background:radial-gradient(circle at 35% 30%,#fff1b8,#e48618 55%,#8d351b);
+  border:4px solid #fff1c9;
+  box-shadow:0 7px 22px #5c250733;
+  color:#6e1f12;font-size:38px;font-weight:700;
+  line-height:.9;
+}
+.cover-fallback span{
+  font:700 11px Arial,sans-serif;letter-spacing:1px;margin-top:7px;
+}
+@media(max-width:390px){
+  .cover-wrap,.cover-icon,.cover-fallback{width:92px;height:92px}
+}
+
+.hero-cover{padding:0 0 16px;text-align:center;position:relative}
+.cover-image{width:100%;height:185px;overflow:hidden;position:relative}
+.cover-image img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-icon-wrap{width:112px;height:112px;margin:-56px auto 7px;position:relative;z-index:3;padding:4px;border-radius:50%;background:#fff1c9;box-shadow:0 7px 24px rgba(92,37,3,.28)}
+.hero-icon{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:2px solid #fff8df}
+.hero-cover .om{margin:5px 0 2px}
+.hero-cover .title{margin:2px 10px 2px}
+.hero-cover .subtitle{margin:0 8px}
+@media(max-width:390px){.cover-image{height:155px}.hero-icon-wrap{width:96px;height:96px;margin-top:-48px}}
 </style>
 </head>
 <body>
 <div class="floating"><div class="petal">🌸</div><div class="petal">🌼</div><div class="petal">🌸</div><div class="petal">🌼</div><div class="petal">🌸</div></div>
-<div class="page"><div class="card"><img class="cover" src="ganesh-cover.jpg" alt="Ganesh Chaturthi">
-<header class="header">
-  <div class="ganesh-icon"><img src="ganesh-icon.jpg" alt="Lord Ganesha"></div>
-  <div class="om">ॐ</div>
+<div class="page"><div class="card">
+<header class="header hero-cover">
+  <div class="cover-image">
+    <img src="ganesh-cover.jpg" alt="Ganesh Chaturthi cover">
+  </div>
+  <div class="hero-icon-wrap">
+    <img class="hero-icon" src="ganesh-icon.jpg" alt="Lord Ganesha">
+  </div>
+  <div class="om">॥ श्री गणेशाय नमः ॥</div>
   <h1 class="title">Ganesh Chaturthi 2026</h1>
-  <div class="subtitle">Prestige Elysian</div>
+  <div class="subtitle">Prestige Elysian • Ganpati Bappa Morya 🙏</div>
 </header>
 <div class="shloka-box"><div id="shloka" class="shloka">॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ॥<br>॥ निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥</div></div>
+<section class="schedule-section">
+      <div class="section-title">🪔 Celebration Schedule 🪔</div>
+      <div class="schedule">
+        <div class="event"><div class="date"><b>13 AUG</b><span>THURSDAY</span></div><div class="event-text"><b>🥁 Aagman</b><span>Welcoming Bappa</span></div></div>
+        <div class="event"><div class="date"><b>14 AUG</b><span>FRIDAY</span></div><div class="event-text"><b>🪔 Sthapana</b><span>Ganesh Sthapana & celebrations</span></div></div>
+        <div class="event"><div class="date"><b>15 AUG</b><span>SATURDAY</span></div><div class="event-text"><b>🌺 Visarjan</b><span>Farewell to Bappa</span></div></div>
+      </div>
+    </section>
 <section class="section"><div class="live">
-<div class="live-head">
-  🪔 <span class="live-dot"></span>
-  Community Celebration • Live
-  <span class="live-diya">🪔</span>
-</div>
+<div class="live-head"><span class="live-dot"></span>Community Celebration • Live</div>
 <div class="stats">
 <div class="stat"><div id="families" class="num">—</div><div class="label">FAMILIES CONTRIBUTED</div><div id="familyProgress" class="sub-progress">— / 548</div><div class="progress-track"><div id="familyBar" class="progress-fill"></div></div><div id="familyPercent" class="percentage">—</div></div>
-<div class="stat"><div id="total" class="num">—</div><div class="label">CONTRIBUTION COLLECTED</div><div id="donationTarget" class="sub-progress">Target ₹3,00,000</div><div class="progress-track"><div id="donationBar" class="progress-fill"></div></div><div id="donationPercent" class="percentage">—</div></div>
+<div class="stat"><div id="total" class="num">—</div><div class="label">DONATIONS RAISED</div><div id="donationTarget" class="sub-progress">Target ₹3,00,000</div><div class="progress-track"><div id="donationBar" class="progress-fill"></div></div><div id="donationPercent" class="percentage">—</div></div>
 </div>
 <div class="target-message">🙏 Together, let's bring Bappa's blessings to our community.</div>
 <div id="updated" class="updated">Connecting to live data…</div>
 </div></section>
-<div class="cta"><p>Every contribution makes our celebration brighter and more memorable.</p><button id="continueBtn">CONTRIBUTE FOR GANESHOTSAV 🙏</button></div>
+<div class="cta"><p>Every contribution makes our celebration brighter and more memorable.</p><button id="continueBtn">🙏 CONTRIBUTE FOR BAPPA • DONATE NOW</button></div>
 <div class="footer">Ganpati Bappa Morya! 🙏<br>Together as one community, let's celebrate Bappa with devotion and joy.</div>
 </div></div>
 <script>
