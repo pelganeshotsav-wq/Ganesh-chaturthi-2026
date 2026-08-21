@@ -844,6 +844,10 @@ function updateDashboard(data) {
     ).textContent =
         formatMoney(donations.total);
 
+    document.getElementById(
+        "topTotalBudget"
+    ).textContent =
+        formatMoney(expenses.budget);
 
     document.getElementById(
         "stillToCollect"
