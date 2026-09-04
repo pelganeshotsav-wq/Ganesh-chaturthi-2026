@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahaprasad Registration | Prestige Elysian</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}
+body{
+  background:radial-gradient(circle at top,#fff4cf 0%,#f8d79b 35%,#d98236 100%);
+  font-family:Georgia,"Times New Roman",serif;color:#5e241c;overflow-x:hidden
+}
+.page{width:100%;min-height:100vh;display:flex;justify-content:center;padding:18px 12px 30px}
+.card{
+  width:100%;max-width:520px;
+  background:linear-gradient(180deg,rgba(255,250,231,.97),rgba(255,244,210,.96));
+  border-radius:26px;box-shadow:0 18px 45px rgba(94,36,28,.25);
+  overflow:hidden;position:relative
+}
+.hero-cover{padding:0 0 16px;text-align:center;position:relative}
+.cover-image{width:100%;height:185px;overflow:hidden;position:relative}
+.cover-image img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-icon-wrap{
+  width:112px;height:112px;margin:-56px auto 7px;position:relative;z-index:3;
+  padding:4px;border-radius:50%;background:#fff1c9;
+  box-shadow:0 7px 24px rgba(92,37,3,.28)
+}
+.hero-icon{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;border:2px solid #fff8df}
+.om{font-size:23px;margin:5px 0 2px}
+.title{font-size:28px;font-weight:700;letter-spacing:.3px;margin:2px 10px 2px}
+.subtitle{font-size:13px;margin:0 8px;color:#8a5230}
+.shloka-box{
+  margin:4px 18px 16px;padding:15px;border-radius:18px;
+  background:linear-gradient(135deg,#7e2f19,#a9461d);color:#fff5d7;
+  text-align:center;box-shadow:0 8px 20px #5e241c33;
+  min-height:108px;display:flex;align-items:center;justify-content:center
+}
+.shloka{font-size:15px;line-height:1.75}
+
+.event-info{padding:0 14px 8px}
+.info-card{padding:17px 16px 16px;border-radius:20px;background:linear-gradient(135deg,#fffdf7,#fff5dc);border:1px solid #dfbd73;box-shadow:0 7px 18px rgba(91,45,22,.09)}
+.info-title{text-align:center;font-size:18px;color:#6e1f12;font-weight:700;margin:0 0 12px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
+.info-item{background:#fff8e8;border:1px solid #ead19a;border-radius:14px;padding:11px 9px;text-align:center}
+.info-icon{font-size:20px;margin-bottom:3px}.info-label{font:700 9px Arial,sans-serif;letter-spacing:.6px;color:#9a7040;text-transform:uppercase}.info-value{font:700 13px Arial,sans-serif;color:#6e2416;margin-top:4px;line-height:1.35}
+.info-text{font:12px/1.65 Arial,sans-serif;color:#6b5037;text-align:center;margin:0}
+.info-highlight{margin-top:12px;padding:10px 11px;border-radius:13px;background:#8d351b;color:#fff5d7;text-align:center;font:700 12px/1.5 Arial,sans-serif}
+@media(max-width:390px){.event-info{padding-left:10px;padding-right:10px}.info-grid{grid-template-columns:1fr 1fr}.info-card{padding:15px 12px}}
+
+.form-section{padding:0 14px 8px}
+.form-card{
+  padding:18px 15px 16px;border-radius:20px;
+  background:linear-gradient(135deg,#fffdf7,#fff5dc);
+  border:1px solid #dfbd73;box-shadow:0 7px 18px rgba(91,45,22,.09)
+}
+.section-title{text-align:center;font-size:18px;color:#6e1f12;font-weight:700;margin:0 0 5px}
+.section-subtitle{text-align:center;font-size:11px;color:#8b6a43;margin:0 0 16px;line-height:1.45}
+.field{margin-bottom:13px}
+.field label{
+  display:block;font-family:Arial,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.4px;color:#6e2416;margin:0 0 6px
+}
+.field input{
+  width:100%;height:48px;border:1px solid #d8b66e;border-radius:12px;
+  background:#fff;color:#5e241c;padding:0 13px;
+  font:15px Arial,sans-serif;outline:none
+}
+.field input:focus{border-color:#b84e20;box-shadow:0 0 0 3px #e4861820}
+.people-row{position:relative}
+.people-row input{padding-right:52px}
+.people-suffix{
+  position:absolute;right:14px;bottom:15px;font:700 11px Arial,sans-serif;color:#9a7040
+}
+.submit-btn{
+  width:100%;border:0;border-radius:15px;padding:14px 18px;
+  font:700 16px Arial,sans-serif;color:white;
+  background:linear-gradient(135deg,#ffb52e 0%,#e86f12 48%,#b9360d 100%);
+  border:2px solid #ffd76a;box-shadow:0 0 0 3px #fff1bd66,0 9px 26px #8b3c1e55;
+  cursor:pointer;margin-top:3px
+}
+.submit-btn:disabled{opacity:.65;cursor:wait}
+.note{
+  text-align:center;padding:11px 18px 4px;
+  font:10.5px/1.55 Arial,sans-serif;color:#80664a
+}
+.success{
+  display:none;margin-top:13px;padding:14px;border-radius:14px;
+  background:#fff8e6;border:1px solid #d9b86e;text-align:center;color:#5e241c
+}
+.success .big{font-size:25px;margin-bottom:5px}
+.success b{font-family:Arial,sans-serif}
+.error{
+  display:none;margin-top:12px;padding:11px;border-radius:12px;
+  background:#fff0eb;border:1px solid #df9b84;color:#8b2e1c;
+  font:11px/1.45 Arial,sans-serif;text-align:center
+}
+.footer{text-align:center;padding:12px 20px 22px;color:#8a5230;font-size:12px;line-height:1.5}
+.live-section{padding:0 14px 8px}
+.live-card{padding:14px 12px 17px;border-radius:20px;background:linear-gradient(135deg,#8d351b,#b84e20);color:white;box-shadow:0 10px 24px #5e241c33}
+.live-head{text-align:center;font:11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;opacity:.95}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#8ff0ad;margin-right:5px;box-shadow:0 0 10px #8ff0ad;animation:pulse 1.5s infinite}
+.live-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.live-stat{background:#fff9e91a;border:1px solid #ffffff30;border-radius:17px;padding:15px 9px 14px;text-align:center}
+.live-num{font:800 26px/1.15 Arial,sans-serif}
+.live-label{font:700 10px Arial,sans-serif;letter-spacing:.7px;margin-top:6px}
+.live-sub{font:11px Arial,sans-serif;margin-top:7px;opacity:.82}
+.updated{text-align:center;font:10px Arial,sans-serif;opacity:.8;margin-top:11px}
+.cta{padding:8px 14px 2px;text-align:center}
+.cta p{margin:0 0 12px;font:12px/1.5 Arial,sans-serif;color:#80664a}
+#continueBtn{position:relative;width:100%;border:0;border-radius:15px;padding:14px 18px;font:700 15px Arial,sans-serif;color:white;background:linear-gradient(135deg,#ffb52e 0%,#e86f12 48%,#b9360d 100%);border:2px solid #ffd76a;box-shadow:0 0 0 3px #fff1bd66,0 9px 26px #8b3c1e55;cursor:pointer;animation:donatePulse 2s ease-in-out infinite}
+#continueBtn:active{transform:scale(.99)}
+@keyframes pulse{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+@keyframes donatePulse{0%,100%{box-shadow:0 0 0 3px #fff1bd66,0 9px 26px #8b3c1e55}50%{box-shadow:0 0 0 6px #ffd76a44,0 12px 32px #8b3c1e66}}
+
+.floating{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-20px;font-size:16px;animation:fall linear infinite;opacity:.7}
+.petal:nth-child(1){left:7%;animation-duration:9s}
+.petal:nth-child(2){left:27%;animation-duration:12s;animation-delay:-5s}
+.petal:nth-child(3){left:51%;animation-duration:10s;animation-delay:-2s}
+.petal:nth-child(4){left:76%;animation-duration:13s;animation-delay:-7s}
+.petal:nth-child(5){left:92%;animation-duration:11s;animation-delay:-3s}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media(max-width:390px){
+  .page{padding:10px 8px 20px}.card{border-radius:22px}
+  .cover-image{height:155px}.hero-icon-wrap{width:96px;height:96px;margin-top:-48px}
+  .title{font-size:25px}.subtitle{font-size:12px}
+  .shloka-box{margin-left:12px;margin-right:12px}.shloka{font-size:14px}
+  .form-section{padding-left:10px;padding-right:10px}
+  .form-card{padding:15px 12px 14px}
+}
+</style>
+</head>
+<body>
+<div class="floating">
+  <div class="petal">🌸</div><div class="petal">🌼</div><div class="petal">🌸</div>
+  <div class="petal">🌼</div><div class="petal">🌸</div>
+</div>
+
+<div class="page">
+  <div class="card">
+    <header class="hero-cover">
+      <div class="cover-image"><img src="ganesh-cover.jpg" alt="Ganesh Chaturthi cover"></div>
+      <div class="hero-icon-wrap"><img class="hero-icon" src="ganesh-icon.jpg" alt="Lord Ganesha"></div>
+      <div class="om">॥ श्री गणेशाय नमः ॥</div>
+      <h1 class="title">Mahaprasad Registration</h1>
+      <div class="subtitle">Prestige Elysian • 16 September 2026 🙏</div>
+    </header>
+
+    <div class="shloka-box">
+      <div class="shloka">
+        ॥ अन्नदानं परं दानं विद्यादानमतः परम् ॥<br>
+        ॥ अन्नेन क्षणिका तृप्तिः विद्यया अमृतं फलम् ॥
+      </div>
+    </div>
+
+    <section class="live-section">
+      <div class="live-card">
+        <div class="live-head"><span class="live-dot"></span>Mahaprasad Registrations • Live</div>
+        <div class="live-stats">
+          <div class="live-stat">
+            <div id="totalPeople" class="live-num">—</div>
+            <div class="live-label">PEOPLE JOINING</div>
+            <div id="peopleSub" class="live-sub">Live count</div>
+          </div>
+          <div class="live-stat">
+            <div id="registeredFlats" class="live-num">—</div>
+            <div class="live-label">FLATS REGISTERED</div>
+            <div class="live-sub">One entry per flat</div>
+          </div>
+        </div>
+        <div id="updated" class="updated">Connecting to live data…</div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="form-card">
+        <div class="section-title">🍚 Register for Mahaprasad 🍚</div>
+        <div class="section-subtitle">
+          Please let us know how many people from your flat will be joining us for Mahaprasad on 16 September.
+          This helps us prepare enough prasad for everyone.
+        </div>
+
+        <form id="mahaprasadForm" autocomplete="off">
+          <div class="field">
+            <label for="flatNumber">FLAT NUMBER</label>
+            <input id="flatNumber" name="flatNumber" type="text"
+                   placeholder="Enter your flat number" maxlength="20"
+                   required>
+          </div>
+
+          <div class="field people-row">
+            <label for="people">NUMBER OF PEOPLE</label>
+            <input id="people" name="people" type="number"
+                   placeholder="e.g. 4" min="1" step="1" required>
+            <span class="people-suffix">PEOPLE</span>
+          </div>
+
+          <button id="submitBtn" class="submit-btn" type="submit">
+            🙏 SUBMIT MAHAPRASAD COUNT
+          </button>
+        </form>
+
+        <div id="success" class="success">
+          <div class="big">🙏</div>
+          <b>Count submitted successfully!</b>
+          <div id="successText" style="margin-top:5px;font:12px Arial,sans-serif"></div>
+          <div style="margin-top:8px;font:10px Arial,sans-serif;color:#80664a">
+            Only one submission is allowed per flat.
+          </div>
+        </div>
+
+        <div id="error" class="error"></div>
+      </div>
+    </section>
+
+    <section class="live-section">
+      <div class="live-card">
+        <div class="live-head"><span class="live-dot"></span>Ganeshotsav Contribution • Live</div>
+        <div class="live-stats">
+          <div class="live-stat">
+            <div id="donationTotal" class="live-num">—</div>
+            <div class="live-label">DONATION COLLECTED</div>
+            <div id="donationSub" class="live-sub">Target ₹3,00,000</div>
+          </div>
+          <div class="live-stat">
+            <div id="donationFlats" class="live-num">—</div>
+            <div class="live-label">FLATS HAVE DONATED</div>
+            <div id="donationFlatsSub" class="live-sub">Out of 548 flats</div>
+          </div>
+        </div>
+        <div id="donationUpdated" class="updated">Connecting to live donation data…</div>
+      </div>
+    </section>
+
+    <div class="note">
+      One submission per flat only. Please make sure your count is correct before submitting.
+    </div>
+    <section class="cta">
+      <p>Let us conclude our Ganeshotsav with devotion, gratitude and the joy of sharing Mahaprasad together. 🙏</p>
+      <button id="continueBtn" type="button">🙏 CONTINUE TO GANESHOTSAV</button>
+    </section>
+    <div class="footer">
+      Ganpati Bappa Morya! 🙏<br>
+      Together as one community, let's celebrate Bappa with devotion and joy.
+    </div>
+  </div>
+</div>
+
+<script>
+const API_URL="https://script.google.com/macros/s/AKfycbz3yb6S_qeYI4BYjPChbf2eRbIyPlgu3eRitwxb3f8SgDPVo51ed1GzFQtzAd-46rrM/exec";
+
+const form=document.getElementById("mahaprasadForm");
+const flatEl=document.getElementById("flatNumber");
+const peopleEl=document.getElementById("people");
+const submitBtn=document.getElementById("submitBtn");
+const successEl=document.getElementById("success");
+const successText=document.getElementById("successText");
+const errorEl=document.getElementById("error");
+
+function showError(msg){
+  errorEl.textContent=msg;
+  errorEl.style.display="block";
+}
+function hideMessages(){
+  errorEl.style.display="none";
+  successEl.style.display="none";
+}
+function normaliseFlat(v){
+  return String(v||"").trim().toUpperCase().replace(/\s+/g," ");
+}
+
+const REFRESH_MS=30000;
+const totalPeopleEl=document.getElementById("totalPeople");
+const registeredFlatsEl=document.getElementById("registeredFlats");
+const updatedEl=document.getElementById("updated");
+
+function animateNumber(el,to){
+  const from=Number(el.dataset.value||0), target=Number(to)||0, start=performance.now(), duration=700;
+  function tick(now){
+    const p=Math.min(1,(now-start)/duration), eased=1-Math.pow(1-p,3);
+    const value=Math.round(from+(target-from)*eased);
+    el.textContent=value.toLocaleString("en-IN");
+    if(p<1) requestAnimationFrame(tick); else el.dataset.value=target;
+  }
+  requestAnimationFrame(tick);
+}
+
+async function loadMahaprasadLive(){
+  try{
+    const r=await fetch(API_URL+"?action=mahaprasadLive&t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    if(typeof data.totalPeople==="undefined" || typeof data.registeredFlats==="undefined") throw new Error("Invalid live data");
+    animateNumber(totalPeopleEl,data.totalPeople);
+    animateNumber(registeredFlatsEl,data.registeredFlats);
+    updatedEl.textContent="Updated just now • refreshes every 30 seconds";
+  }catch(e){
+    console.log("MAHAPRASAD LIVE DATA ERROR:",e);
+    updatedEl.textContent="Live count temporarily unavailable";
+  }
+}
+
+loadMahaprasadLive();
+setInterval(loadMahaprasadLive,REFRESH_MS);
+
+const donationTotalEl=document.getElementById("donationTotal");
+const donationFlatsEl=document.getElementById("donationFlats");
+const donationSubEl=document.getElementById("donationSub");
+const donationFlatsSubEl=document.getElementById("donationFlatsSub");
+const donationUpdatedEl=document.getElementById("donationUpdated");
+const DONATION_TARGET=300000;
+const TOTAL_FLATS=548;
+
+function formatINR(n){return "₹"+Number(n||0).toLocaleString("en-IN");}
+
+async function loadDonationLive(){
+  try{
+    const r=await fetch(API_URL+"?action=live&t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    if(typeof data.total==="undefined" || typeof data.families==="undefined") throw new Error("Invalid donation live data");
+    animateNumber(donationTotalEl,Number(data.total)||0);
+    animateNumber(donationFlatsEl,Number(data.families)||0);
+    donationSubEl.textContent="Target "+formatINR(DONATION_TARGET);
+    donationFlatsSubEl.textContent="Out of "+TOTAL_FLATS.toLocaleString("en-IN")+" flats";
+    donationUpdatedEl.textContent="Updated just now • refreshes every 30 seconds";
+  }catch(e){
+    console.log("DONATION LIVE DATA ERROR:",e);
+    donationUpdatedEl.textContent="Live donation data temporarily unavailable";
+  }
+}
+
+loadDonationLive();
+setInterval(loadDonationLive,REFRESH_MS);
+
+document.getElementById("continueBtn").onclick=function(){location.href="index.html"};
+
+form.addEventListener("submit", async function(e){
+  e.preventDefault();
+  hideMessages();
+
+  const flat=normaliseFlat(flatEl.value);
+  const people=parseInt(peopleEl.value,10);
+
+  if(!flat){showError("Please enter your flat number.");return}
+  if(!Number.isInteger(people)||people<1){
+    showError("Please enter a valid number of people.");return
+  }
+
+  submitBtn.disabled=true;
+  submitBtn.textContent="⏳ SUBMITTING…";
+
+  try{
+    const params=new URLSearchParams({
+      action:"mahaprasadSubmit",
+      flatNumber:flat,
+      people:String(people),
+      t:String(Date.now())
+    });
+
+    const r=await fetch(API_URL+"?"+params.toString(),{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const data=await r.json();
+
+    if(data.success){
+      form.style.display="none";
+      successText.textContent=`Flat ${flat} • ${people} ${people===1?"person":"people"}`;
+      successEl.style.display="block";
+      loadMahaprasadLive();
+    }else{
+      showError(data.message || "This flat has already submitted a count.");
+    }
+  }catch(err){
+    console.error(err);
+    showError("Unable to submit right now. Please try again.");
+  }finally{
+    submitBtn.disabled=false;
+    submitBtn.textContent="🙏 SUBMIT MAHAPRASAD COUNT";
+  }
+});
+</script>
+</body>
+</html>
