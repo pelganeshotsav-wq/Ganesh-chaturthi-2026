@@ -38,7 +38,6 @@ body{
 }
 .shloka{font-size:15px;line-height:1.75}
 
-.event-info{padding:0 14px 8px}
 .info-card{padding:17px 16px 16px;border-radius:20px;background:linear-gradient(135deg,#fffdf7,#fff5dc);border:1px solid #dfbd73;box-shadow:0 7px 18px rgba(91,45,22,.09)}
 .info-title{text-align:center;font-size:18px;color:#6e1f12;font-weight:700;margin:0 0 12px}
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
@@ -46,7 +45,6 @@ body{
 .info-icon{font-size:20px;margin-bottom:3px}.info-label{font:700 9px Arial,sans-serif;letter-spacing:.6px;color:#9a7040;text-transform:uppercase}.info-value{font:700 13px Arial,sans-serif;color:#6e2416;margin-top:4px;line-height:1.35}
 .info-text{font:12px/1.65 Arial,sans-serif;color:#6b5037;text-align:center;margin:0}
 .info-highlight{margin-top:12px;padding:10px 11px;border-radius:13px;background:#8d351b;color:#fff5d7;text-align:center;font:700 12px/1.5 Arial,sans-serif}
-@media(max-width:390px){.event-info{padding-left:10px;padding-right:10px}.info-grid{grid-template-columns:1fr 1fr}.info-card{padding:15px 12px}}
 
 .form-section{padding:0 14px 8px}
 .form-card{
@@ -129,6 +127,48 @@ body{
   .form-section{padding-left:10px;padding-right:10px}
   .form-card{padding:15px 12px 14px}
 }
+
+    .prasad-blessing{
+      margin: 10px auto 18px;
+      text-align:center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,248,235,.8);
+      border: 1px solid rgba(170,91,30,.18);
+    }
+    .food-icons{
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+    .food-leaf-image{
+      display:block;
+      width:min(100%, 560px);
+      margin:0 auto 8px;
+      border-radius:18px;
+      box-shadow:0 8px 22px rgba(91,43,18,.14);
+    }
+    .food-icon-strip{
+      display:block;
+      width:min(100%, 430px);
+      height:auto;
+      margin:4px auto 2px;
+      border-radius:10px;
+      mix-blend-mode:multiply;
+    }
+
+    .blessing-text{
+      margin-top: 5px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .blessing-subtext{
+      margin-top: 3px;
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: .78;
+    }
 </style>
 </head>
 <body>
@@ -175,7 +215,12 @@ body{
 
     <section class="form-section">
       <div class="form-card">
-        <div class="section-title">🍚 Register for Mahaprasad 🍚</div>
+        <div class="section-title">🍚 Register for Mahaprasad 🙏</div>
+        <div class="prasad-blessing">
+          <img class="food-leaf-image" src="mahaprasad-food-leaf.png" alt="Traditional Mahaprasad with puri, sabji and rice served on a banana leaf">
+          <div class="blessing-text">स्वस्तिक भोजन • Made with Love &amp; Bappa’s Blessings 🙏</div>
+          <div class="blessing-subtext">A lovingly prepared Mahaprasad, made with devotion and blessed by Bappa.</div>
+        </div>
         <div class="section-subtitle">
           Please let us know how many people from your flat will be joining us for Mahaprasad on 16 September.
           This helps us prepare enough prasad for everyone.
@@ -213,6 +258,7 @@ body{
         <div id="error" class="error"></div>
       </div>
     </section>
+
 
     <section class="live-section">
       <div class="live-card">
